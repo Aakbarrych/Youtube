@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Youtube</string>
+    <string name="playlist">Playlist</string>
+    <string name="try_again">Try Again</string>
+</resources>
