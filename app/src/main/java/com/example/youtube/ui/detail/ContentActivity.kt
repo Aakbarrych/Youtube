@@ -1,12 +1,12 @@
-package com.example.youtube.ui.content_playlist
+package com.example.youtube.ui.detail
 
 import android.os.Bundle
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import com.example.youtube.R
-import com.example.youtube.base.BaseActivity
+import com.example.youtube.core.ui.BaseActivity
 import com.example.youtube.databinding.ActivityContentBinding
-import com.example.youtube.ui.PlaylistViewModel
+import com.example.youtube.ui.playlist.PlaylistViewModel
 
 class ContentActivity : BaseActivity<ActivityContentBinding, PlaylistViewModel>() {
 
@@ -26,7 +26,7 @@ class ContentActivity : BaseActivity<ActivityContentBinding, PlaylistViewModel>(
     override fun initViews() {
         super.initViews()
         val value = intent.getStringExtra(ID)
-        Toast.makeText(this, "Data: $value", Toast.LENGTH_SHORT).show()
+        Toast.makeText(this, value, Toast.LENGTH_SHORT).show()
     }
 
     companion object {

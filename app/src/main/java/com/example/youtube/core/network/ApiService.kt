@@ -1,4 +1,4 @@
-package com.example.youtube.remote
+package com.example.youtube.core.network
 
 import Playlists
 import retrofit2.Call

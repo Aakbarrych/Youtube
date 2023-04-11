@@ -1,4 +1,4 @@
-package com.example.youtube.base
+package com.example.youtube.core.ui
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -26,8 +26,8 @@ abstract class BaseActivity<VB: ViewBinding, VM: BaseViewModel> : AppCompatActiv
 
     open fun initViews() {} // Инициализация вью
     open fun isConnection() {} // Проверка на интернет
-    open fun initViewModel() {} //
-    open fun initListener() {} //
-    open fun observe(){}
+    open fun initViewModel() {} // Инициализация моделек
+    open fun initListener() {} // Слушатель
+    open fun observe(){} // Функция для изменяемых данных Live Mutable
 
 }

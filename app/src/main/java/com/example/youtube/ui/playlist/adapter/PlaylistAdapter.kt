@@ -1,4 +1,4 @@
-package com.example.youtube.ui
+package com.example.youtube.ui.playlist.adapter
 
 
 import Item

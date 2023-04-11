@@ -1,6 +1,7 @@
-package com.example.youtube.remote
+package com.example.youtube.data.remote
 
 import com.example.youtube.BuildConfig
+import com.example.youtube.core.network.ApiService
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -10,7 +11,7 @@ import java.util.concurrent.TimeUnit
 class RetrofitClient {
 
     companion object{
-        fun create(): ApiService{
+        fun create(): ApiService {
             val interceptor = HttpLoggingInterceptor()
             interceptor.setLevel(HttpLoggingInterceptor.Level.BODY)
 
