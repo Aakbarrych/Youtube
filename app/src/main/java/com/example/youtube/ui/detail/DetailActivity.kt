@@ -48,10 +48,10 @@ class DetailActivity : BaseActivity<ActivityDetailBinding, DetailViewModel>() {
     override fun initViewModel() {
         super.initViewModel()
         intent.getStringExtra(ID)
-        val getId = intent.getStringExtra("id")
-        val getTitle = intent.getStringExtra("title")
-        val getDesc = intent.getStringExtra("desc")
-        val getCount = intent.getIntExtra("count" ,0)
+        val getId = intent.getStringExtra(ID)
+        val getTitle = intent.getStringExtra(TITLE)
+        val getDesc = intent.getStringExtra(DESC)
+        val getCount = intent.getIntExtra(COUNT ,0)
         viewModel.getPlaylistItems(getId.toString()).observe(this) {
             it.data?.let { it1 -> adapter.addData(it1.items) }
             binding.tvTitle.text = getTitle
@@ -73,6 +73,9 @@ class DetailActivity : BaseActivity<ActivityDetailBinding, DetailViewModel>() {
 
     companion object {
         const val ID = "id"
+        const val TITLE = "title"
+        const val DESC = "desc"
+        const val COUNT = "count"
     }
 
 }

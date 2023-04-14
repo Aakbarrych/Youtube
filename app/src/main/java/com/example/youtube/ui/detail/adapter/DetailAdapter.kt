@@ -8,9 +8,8 @@ import androidx.recyclerview.widget.RecyclerView.Adapter
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.bumptech.glide.Glide
 import com.example.youtube.databinding.ItemDetailBinding
-import kotlin.reflect.KFunction1
 
-class DetailAdapter() : Adapter<DetailAdapter.DetailViewHolder>() {
+class DetailAdapter : Adapter<DetailAdapter.DetailViewHolder>() {
     private val data = arrayListOf<Item>()
 
     @SuppressLint("NotifyDataSetChanged")

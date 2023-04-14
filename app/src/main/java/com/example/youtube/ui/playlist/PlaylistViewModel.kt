@@ -12,5 +12,4 @@ class PlaylistViewModel : BaseViewModel() {
         return App.repository.getPlaylists()
     }
 
-
 }

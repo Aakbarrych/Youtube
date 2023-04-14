@@ -20,8 +20,6 @@ class PlayListActivity : BaseActivity<ActivityPlaylistBinding, PlaylistViewModel
 
     private lateinit var cld: ConnectionLiveData
 
-    private var playlistData = listOf<Item>()
-
     override fun setPlaylist() {
         super.setPlaylist()
         adapter = PlaylistAdapter(this::onItemClick)
@@ -78,10 +76,10 @@ class PlayListActivity : BaseActivity<ActivityPlaylistBinding, PlaylistViewModel
         val intent = Intent(this, DetailActivity::class.java).apply {
             putExtra(ID, item.id)
         }
-        intent.putExtra("id", item.id)
-        intent.putExtra("title", item.snippet.title)
-        intent.putExtra("desc", item.snippet.description)
-        intent.putExtra("count",item.contentDetails.itemCount)
+        intent.putExtra(ID, item.id)
+        intent.putExtra(TITLE, item.snippet.title)
+        intent.putExtra(DESC, item.snippet.description)
+        intent.putExtra(COUNT,item.contentDetails.itemCount)
         startActivity(intent)
     }
 
@@ -91,5 +89,9 @@ class PlayListActivity : BaseActivity<ActivityPlaylistBinding, PlaylistViewModel
 
     companion object {
         const val ID = "id"
+        const val TITLE = "title"
+        const val DESC = "desc"
+        const val COUNT = "count"
+        const val DURATION = "duration"
     }
 }
