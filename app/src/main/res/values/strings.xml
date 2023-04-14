@@ -3,4 +3,14 @@
     <string name="playlist">Playlist</string>
     <string name="try_again">Try Again</string>
     <string name="no_internet">No internet</string>
+    <string name="playlist_description">PlaylistDescription</string>
+    <string name="video_count">Video Count</string>
+    <string name="main_text">Main Text</string>
+    <string name="description_text">Description Text</string>
+    <string name="back">Back</string>
+    <string name="imageview">ImageView</string>
+    <string name="video_duration">Video Duration</string>
+    <string name="video_title">Video Title</string>
+    <string name="video_amount">Video Amount</string>
+    <string name="_5_video_series">5 video series</string>
 </resources>

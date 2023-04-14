@@ -2,14 +2,14 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="@dimen/p16dp"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
-        android:layout_width="107dp"
-        android:layout_height="64dp"
-        app:cardCornerRadius="9dp"
+        android:layout_width="120dp"
+        android:layout_height="80dp"
+        app:cardCornerRadius="7dp"
+        android:layout_margin="@dimen/p16dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -21,6 +21,7 @@
                 android:id="@+id/ivPlaylist"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:scaleType="centerCrop"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -57,20 +58,24 @@
 
     <TextView
         android:id="@+id/tvDesc"
-        android:layout_width="100dp"
+        android:layout_width="250dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:layout_marginEnd="116dp"
-        app:layout_constraintBottom_toBottomOf="@+id/cardView"
+        android:text="@string/playlist_description"
+        android:layout_marginTop="5dp"
+        android:textColor="@color/black_for_text"
+        android:textStyle="bold"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvVideoAmount" />
+        app:layout_constraintTop_toTopOf="@+id/cardView" />
 
     <TextView
         android:id="@+id/tvVideoAmount"
-        android:layout_width="100dp"
+        android:layout_width="250dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="116dp"
+        android:text="@string/video_count"
+        android:textColor="@color/gray_playlist_text"
+        app:layout_constraintBottom_toBottomOf="@+id/cardView"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/cardView" />
+        app:layout_constraintTop_toBottomOf="@+id/tvDesc" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

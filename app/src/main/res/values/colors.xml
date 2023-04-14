@@ -9,4 +9,9 @@
     <color name="white">#FFFFFFFF</color>
     <color name="gray">#8A8484</color>
     <color name="red">#F80000</color>
+    <color name="white_1">#F7F7F7</color>
+    <color name="black_for_text">#333333</color>
+    <color name="gray_playlist_text">#151515</color>
+    <color name="gray_detail_text">#1A1A1A</color>
+    <color name="view_color">#E1E1E1</color>
 </resources>

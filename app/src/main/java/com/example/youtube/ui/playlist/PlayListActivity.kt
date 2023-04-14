@@ -11,7 +11,7 @@ import com.example.youtube.core.network.connection.ConnectionLiveData
 import com.example.youtube.core.network.result.Status
 import com.example.youtube.core.ui.BaseActivity
 import com.example.youtube.databinding.ActivityPlaylistBinding
-import com.example.youtube.ui.detail.ContentActivity
+import com.example.youtube.ui.detail.DetailActivity
 import com.example.youtube.ui.playlist.adapter.PlaylistAdapter
 
 class PlayListActivity : BaseActivity<ActivityPlaylistBinding, PlaylistViewModel>() {
@@ -20,9 +20,7 @@ class PlayListActivity : BaseActivity<ActivityPlaylistBinding, PlaylistViewModel
 
     private lateinit var cld: ConnectionLiveData
 
-    override val viewModel: PlaylistViewModel by lazy {
-        ViewModelProvider(this)[PlaylistViewModel::class.java]
-    }
+    private var playlistData = listOf<Item>()
 
     override fun setPlaylist() {
         super.setPlaylist()
@@ -31,6 +29,7 @@ class PlayListActivity : BaseActivity<ActivityPlaylistBinding, PlaylistViewModel
 
     override fun isConnection() {
         super.isConnection()
+
         val noInternetView = binding.noInternet
         val yesInternetView = binding.playlistLayout
         cld = ConnectionLiveData(application)
@@ -68,7 +67,6 @@ class PlayListActivity : BaseActivity<ActivityPlaylistBinding, PlaylistViewModel
                     viewModel.loading.postValue(false)
                 }
             }
-
         }
     }
 
@@ -77,14 +75,20 @@ class PlayListActivity : BaseActivity<ActivityPlaylistBinding, PlaylistViewModel
     }
 
     private fun onItemClick(item: Item){
-        val intent = Intent(this, ContentActivity::class.java).apply {
-            putExtra(ID, item.snippet.title)
+        val intent = Intent(this, DetailActivity::class.java).apply {
+            putExtra(ID, item.id)
         }
-//        Toast.makeText(this, item.id, Toast.LENGTH_SHORT).show() - этот тост выдает ссылку  плейлиста
-//        не понял точно, какой нужно выводить
+        intent.putExtra("id", item.id)
+        intent.putExtra("title", item.snippet.title)
+        intent.putExtra("desc", item.snippet.description)
+        intent.putExtra("count",item.contentDetails.itemCount)
         startActivity(intent)
-
     }
+
+    override val viewModel: PlaylistViewModel by lazy {
+        ViewModelProvider(this)[PlaylistViewModel::class.java]
+    }
+
     companion object {
         const val ID = "id"
     }
