@@ -4,19 +4,23 @@ import PlaylistItem
 import Playlists
 import com.example.youtube.BuildConfig
 import com.example.youtube.core.network.BaseDataSource
-import com.example.youtube.core.network.RetrofitClient
 import com.example.youtube.core.network.result.Resource
 import com.example.youtube.utils.Const
 import com.example.youtube.utils.Const.part
+import org.koin.dsl.module
 
-class RemoteDataSource : BaseDataSource(){
-    private val apiService : ApiService = RetrofitClient.create()
+val remoteDataSource = module {
+    factory { RemoteDataSource(get()) }
+}
+
+class RemoteDataSource(private val apiService: ApiService) : BaseDataSource(){
 
     suspend fun getPlaylists() : Resource<Playlists> = getResult {
         apiService.getPlaylists(
             BuildConfig.API_KEY,
             part,
-            Const.channelId
+            Const.channelId,
+            20
         )
     }
 
@@ -24,8 +28,17 @@ class RemoteDataSource : BaseDataSource(){
         return getResult {
             apiService.getPlaylistItems(BuildConfig.API_KEY,
                 part,
-                playlistId
+                playlistId,
+                10
             )
         }
+    }
+
+    suspend fun getVideo(id: String?) = getResult {
+        apiService.getVideo(
+            BuildConfig.API_KEY,
+            part,
+            id!!
+        )
     }
 }

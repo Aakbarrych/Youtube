@@ -1,19 +1,23 @@
 package com.example.youtube.ui.detail
 
+import Item
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.view.View
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.youtube.core.network.connection.ConnectionLiveData
 import com.example.youtube.core.ui.BaseActivity
 import com.example.youtube.databinding.ActivityDetailBinding
 import com.example.youtube.ui.detail.adapter.DetailAdapter
+import com.example.youtube.ui.video.VideoActivity
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class DetailActivity : BaseActivity<ActivityDetailBinding, DetailViewModel>() {
-
     private lateinit var adapter: DetailAdapter
-
     private lateinit var cld: ConnectionLiveData
+
+    override val viewModel: DetailViewModel by viewModel()
+
 
     override fun inflateViewBinding(): ActivityDetailBinding {
         return ActivityDetailBinding.inflate(layoutInflater)
@@ -39,7 +43,7 @@ class DetailActivity : BaseActivity<ActivityDetailBinding, DetailViewModel>() {
 
     override fun initViews() {
         super.initViews()
-        adapter = DetailAdapter()
+        adapter = DetailAdapter(this::onItemClick)
         binding.rvDetailList.layoutManager = LinearLayoutManager(this)
         binding.rvDetailList.adapter = adapter
     }
@@ -67,8 +71,12 @@ class DetailActivity : BaseActivity<ActivityDetailBinding, DetailViewModel>() {
         }
     }
 
-    override val viewModel: DetailViewModel by lazy {
-        ViewModelProvider(this)[DetailViewModel::class.java]
+    private fun onItemClick(item: Item){
+        val intent = Intent(this, VideoActivity::class.java)
+        intent.putExtra("id", item.id)
+        intent.putExtra("title", item.snippet.title)
+        intent.putExtra("desc", item.snippet.description)
+        startActivity(intent)
     }
 
     companion object {

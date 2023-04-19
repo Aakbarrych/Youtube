@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.bumptech.glide.Glide
 import com.example.youtube.databinding.ItemDetailBinding
 
-class DetailAdapter : Adapter<DetailAdapter.DetailViewHolder>() {
+class DetailAdapter(var onItemClick: (Item) -> Unit) : Adapter<DetailAdapter.DetailViewHolder>() {
     private val data = arrayListOf<Item>()
 
     @SuppressLint("NotifyDataSetChanged")
@@ -39,9 +39,9 @@ class DetailAdapter : Adapter<DetailAdapter.DetailViewHolder>() {
                 Glide.with(binding.ivImage).load(item.snippet.thumbnails.maxres.url)
                     .into(binding.ivImage)
                 tvTitle.text = item.snippet.title
-//                itemView.setOnClickListener{
-//                    onClick(item.contentDetails.videoId)
-//                }
+                itemView.setOnClickListener{
+                    onItemClick.invoke(item)
+                }
             }
         }
 

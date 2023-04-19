@@ -5,7 +5,6 @@ import android.content.Intent
 import android.view.View
 import android.widget.Toast
 import androidx.core.view.isVisible
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.youtube.core.network.connection.ConnectionLiveData
 import com.example.youtube.core.network.result.Status
@@ -13,12 +12,13 @@ import com.example.youtube.core.ui.BaseActivity
 import com.example.youtube.databinding.ActivityPlaylistBinding
 import com.example.youtube.ui.detail.DetailActivity
 import com.example.youtube.ui.playlist.adapter.PlaylistAdapter
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class PlayListActivity : BaseActivity<ActivityPlaylistBinding, PlaylistViewModel>() {
-
     private lateinit var adapter: PlaylistAdapter
-
     private lateinit var cld: ConnectionLiveData
+
+    override val viewModel: PlaylistViewModel by viewModel()
 
     override fun setPlaylist() {
         super.setPlaylist()
@@ -76,15 +76,13 @@ class PlayListActivity : BaseActivity<ActivityPlaylistBinding, PlaylistViewModel
         val intent = Intent(this, DetailActivity::class.java).apply {
             putExtra(ID, item.id)
         }
-        intent.putExtra(ID, item.id)
-        intent.putExtra(TITLE, item.snippet.title)
-        intent.putExtra(DESC, item.snippet.description)
-        intent.putExtra(COUNT,item.contentDetails.itemCount)
+        intent.apply {
+            putExtra(ID, item.id)
+            putExtra(TITLE, item.snippet.title)
+            putExtra(DESC, item.snippet.description)
+            putExtra(COUNT,item.contentDetails.itemCount)
+        }
         startActivity(intent)
-    }
-
-    override val viewModel: PlaylistViewModel by lazy {
-        ViewModelProvider(this)[PlaylistViewModel::class.java]
     }
 
     companion object {

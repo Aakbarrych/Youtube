@@ -13,4 +13,8 @@
     <string name="video_title">Video Title</string>
     <string name="video_amount">Video Amount</string>
     <string name="_5_video_series">5 video series</string>
+    <string name="download">Download</string>
+    <string name="ggg">ggg</string>
+    <string name="desc_full_text">Description Full Text</string>
+    <string name="media_url_mp4">https://storage.googleapis.com/exoplayer-test-media-0/BigBuckBunny_320x180.mp4</string>
 </resources>
