@@ -13,13 +13,14 @@ import com.google.android.exoplayer2.ExoPlayer
 import com.google.android.exoplayer2.MediaItem
 import com.google.android.exoplayer2.util.Util
 
-class VideoActivity(override val viewModel: VideoViewModel) : BaseActivity<ActivityVideoBinding, VideoViewModel>() {
+class VideoActivity : BaseActivity<ActivityVideoBinding, VideoViewModel>() {
 
     private var player: ExoPlayer? = null
     private var playWhenReady = true
     private var currentItem = 0
     private var playbackPosition = 0L
     private lateinit var cld: ConnectionLiveData
+    override val viewModel: VideoViewModel by viewModel()
 
     private fun initializePlayer() {
         player = ExoPlayer.Builder(this)
